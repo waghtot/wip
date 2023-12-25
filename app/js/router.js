@@ -9,6 +9,14 @@ var app = document.getElementById('app');
 var routePath = window.location.pathname;
 var template = '/app/view/';
 
+// function loadPage(href)
+//             {
+//                 var xmlhttp = new XMLHttpRequest();
+//                 xmlhttp.open("GET", href, false);
+//                 xmlhttp.send();
+//                 return xmlhttp.responseText;
+//             }
+
 switch(routePath){
     case '/':
         app.innerHTML = ajax.get(template, 'register');
