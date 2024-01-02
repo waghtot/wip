@@ -1,38 +1,31 @@
-import * as role from './role.js';
+import * as role from './controller/role.js';
 import * as navi from './nav.js';
-import * as ajax from './ajax.js';
+import { createElement } from './controller/createElement.js';
+import { Register } from './controller/register.js';
+import { Admin } from './controller/admin.js';
 
 window.onload = function(){
-navi.nav();
-var app = document.getElementById('app');
+    
+    var routePath = window.location.pathname;
 
-var routePath = window.location.pathname;
-var template = '/app/view/';
+    new createElement('nav', '', '');
 
-// function loadPage(href)
-//             {
-//                 var xmlhttp = new XMLHttpRequest();
-//                 xmlhttp.open("GET", href, false);
-//                 xmlhttp.send();
-//                 return xmlhttp.responseText;
-//             }
 
-switch(routePath){
-    case '/':
-        app.innerHTML = ajax.get(template, 'register');
-        // app.innerHTML = loadPage('/app/view/register.html');
-        return role.manageRoles();
-    case '/login':
-        app.innerHTML = ajax.get(template, 'login');
-        // app.innerHTML = loadPage('/app/view/login.html');
-    break;
-    case '/admin':
-        app.innerHTML = ajax.get(template, 'admin');
-        // app.innerHTML = loadPage('/app/view/login.html');
-    break;
-    default:
-        app.innerHTML='404!';
-    break;
-}
-
+    switch(routePath){
+        case '/':
+            new createElement('', 'register', '');
+            new Register;
+        break;
+        case '/login':
+            new createElement('', 'login', '');
+        break;
+        case '/admin':
+            new createElement('', 'admin', '');
+            new Admin;
+        break;
+        default:
+            app.innerHTML='404!';
+        break;
+    }
+    navi.nav();
 }
