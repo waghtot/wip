@@ -1,5 +1,4 @@
 import { Ajax } from "../../model/ajax.js";
-import { Role } from "./role.js";
 import { createElement } from "./createElement.js";
 
 class Admin
@@ -42,7 +41,6 @@ class Admin
             }else{
                 cols = cols+'<td>'+element+'</td>';
             }
-            
         });
             // cols = cols + this.actionButtons();
         return cols;
